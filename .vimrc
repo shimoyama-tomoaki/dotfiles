@@ -10,12 +10,13 @@ set autoindent
 
 set ruler
 set number
-set list
+" set list
 set wildmenu
 set showcmd
 
-set t_Co=256
+autocmd ColorScheme * highlight Visual ctermfg=226
 colorscheme molokai
+set t_Co=256
 let g:molokai_original=1
 set background=dark
 
@@ -25,8 +26,10 @@ set expandtab
 set tabstop=4
 set smarttab
 
-set clipboard=unname
+set clipboard=unnamed,autoselect
 set laststatus=2
+
+:set noswapfile
 
 imap{ {}<LEFT>
 imap[ []<LEFT>
@@ -57,7 +60,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'taichouchou2/html5.vim'
+NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'itchyny/lightline.vim'
 
