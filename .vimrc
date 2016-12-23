@@ -31,6 +31,9 @@ set laststatus=2
 
 :set noswapfile
 
+set nocompatible
+set backspace=indent,eol,start
+
 imap{ {}<LEFT>
 imap[ []<LEFT>
 imap( ()<LEFT>
