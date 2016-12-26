@@ -6,8 +6,6 @@ set hlsearch
 set ignorecase
 set smartcase
 
-set autoindent
-
 set ruler
 set number
 " set list
@@ -20,11 +18,12 @@ set t_Co=256
 let g:molokai_original=1
 set background=dark
 
-set shiftwidth=4
-set softtabstop=4
 set expandtab
 set tabstop=4
-set smarttab
+set softtabstop=0
+set shiftwidth=4
+set autoindent
+set smartindent
 
 set clipboard=unnamed,autoselect
 set laststatus=2
@@ -69,6 +68,7 @@ NeoBundle 'itchyny/lightline.vim'
 
 call neobundle#end()
 
+let g:user_emmet_leader_key = '<C-E>'
 
 " Required:
 filetype plugin indent on
