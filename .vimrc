@@ -71,6 +71,10 @@ NeoBundle 'Shougo/neosnippet-snippets'
 
 call neobundle#end()
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"neocompleteの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
 "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -143,6 +147,11 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"Emmet-vimの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_leader_key = '<C-E>'
 
 " Required:
@@ -151,5 +160,4 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
-
 
