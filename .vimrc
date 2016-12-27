@@ -12,7 +12,7 @@ set number
 set wildmenu
 set showcmd
 
-autocmd ColorScheme * highlight Visual ctermfg=226
+autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=118
 colorscheme molokai
 set t_Co=256
 let g:molokai_original=1
@@ -66,9 +66,15 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 call neobundle#end()
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"neocompleteの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
 "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -141,6 +147,11 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"Emmet-vimの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_leader_key = '<C-E>'
 
 " Required:
@@ -149,5 +160,4 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
-
 
