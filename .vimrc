@@ -12,7 +12,7 @@ set number
 set wildmenu
 set showcmd
 
-autocmd ColorScheme * highlight Visual ctermfg=226
+autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=118
 colorscheme molokai
 set t_Co=256
 let g:molokai_original=1
