@@ -37,6 +37,8 @@ imap{ {}<LEFT>
 imap[ []<LEFT>
 imap( ()<LEFT>
 
+:source $VIMRUNTIME/macros/matchit.vim
+
 " Note: Skip initialization for vim-tiny or vim-small.
  if 0 | endif
 
