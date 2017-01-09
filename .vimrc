@@ -19,9 +19,9 @@ let g:molokai_original=1
 set background=dark
 
 set expandtab
-set tabstop=4
-set softtabstop=0
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set autoindent
 set smartindent
 
@@ -33,9 +33,9 @@ set laststatus=2
 set nocompatible
 set backspace=indent,eol,start
 
-imap{ {}<LEFT>
-imap[ []<LEFT>
-imap( ()<LEFT>
+inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
+inoremap[<Enter> []<LEFT><CR><ESC><S-o>
+inoremap(<Enter> ()<LEFT><CR><ESC><S-o>
 
 :source $VIMRUNTIME/macros/matchit.vim
 
