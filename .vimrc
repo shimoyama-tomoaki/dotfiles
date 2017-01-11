@@ -1,6 +1,6 @@
 :syntax on
 
-set nowrap
+set wrap
 
 set hlsearch
 set ignorecase
