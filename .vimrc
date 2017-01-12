@@ -32,10 +32,14 @@ set laststatus=2
 
 set nocompatible
 set backspace=indent,eol,start
+set scrolloff=10
 
 inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
 inoremap[<Enter> []<LEFT><CR><ESC><S-o>
 inoremap(<Enter> ()<LEFT><CR><ESC><S-o>
+
+nnoremap <Space>h ^
+nnoremap <Space>l $
 
 :source $VIMRUNTIME/macros/matchit.vim
 
@@ -70,6 +74,8 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'bronson/vim-trailing-whitespace'
 
 call neobundle#end()
 
