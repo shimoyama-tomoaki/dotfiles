@@ -32,6 +32,7 @@ set laststatus=2
 
 set nocompatible
 set backspace=indent,eol,start
+set scrolloff=10
 
 inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
 inoremap[<Enter> []<LEFT><CR><ESC><S-o>
