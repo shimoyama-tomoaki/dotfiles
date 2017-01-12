@@ -38,6 +38,9 @@ inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
 inoremap[<Enter> []<LEFT><CR><ESC><S-o>
 inoremap(<Enter> ()<LEFT><CR><ESC><S-o>
 
+nnoremap <Space>h ^
+nnoremap <Space>l $
+
 :source $VIMRUNTIME/macros/matchit.vim
 
 " Note: Skip initialization for vim-tiny or vim-small.
