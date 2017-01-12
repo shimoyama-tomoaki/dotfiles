@@ -70,6 +70,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'airblade/vim-gitgutter'
 
 call neobundle#end()
 
