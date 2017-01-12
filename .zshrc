@@ -1,10 +1,14 @@
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
+# 色を使用
+autoload -Uz colors
+colors
+
 # 補完機能を有効にする
 autoload -Uz compinit
 compinit
 
-# command
+# エイリアス
 alias l1='ls -1'
 alias la1='ls -a -1'
 alias de='cd ~/Desktop'
