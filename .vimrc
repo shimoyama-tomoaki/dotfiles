@@ -46,6 +46,8 @@ inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
 inoremap[<Enter> []<LEFT><CR><ESC><S-o>
 inoremap(<Enter> ()<LEFT><CR><ESC><S-o>
 
+inoremap <silent> jj <ESC>
+
 nnoremap <Space>h ^
 nnoremap <Space>l $
 
