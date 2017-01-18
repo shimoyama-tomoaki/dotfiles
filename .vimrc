@@ -21,7 +21,7 @@ set background=dark
 " let g:molokai_original=1
 
 " one_dark
-autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=3
+autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=11
 autocmd ColorScheme * highlight LineNr ctermfg=180
 colorscheme onedark
 let g:onedark_original=1
