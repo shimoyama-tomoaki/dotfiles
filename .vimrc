@@ -77,6 +77,7 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'surround.vim'
+NeoBundle 'tomtom/tcomment_vim'
 
 call neobundle#end()
 
