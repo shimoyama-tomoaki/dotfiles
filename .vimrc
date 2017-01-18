@@ -42,6 +42,10 @@ set nocompatible
 set backspace=indent,eol,start
 set scrolloff=10
 
+set encoding=utf-8
+set fileencoding=utf-8
+set fileformats=unix,dos,mac
+
 inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
 inoremap[<Enter> []<LEFT><CR><ESC><S-o>
 inoremap(<Enter> ()<LEFT><CR><ESC><S-o>
