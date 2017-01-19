@@ -12,11 +12,19 @@ set number
 set wildmenu
 set showcmd
 
-autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=118
-colorscheme molokai
 set t_Co=256
-let g:molokai_original=1
 set background=dark
+
+" molokai
+" autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=118
+" colorscheme molokai
+" let g:molokai_original=1
+
+" one_dark
+autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=11
+autocmd ColorScheme * highlight LineNr ctermfg=180
+colorscheme onedark
+let g:onedark_original=1
 
 set expandtab
 set tabstop=2
@@ -34,9 +42,17 @@ set nocompatible
 set backspace=indent,eol,start
 set scrolloff=10
 
+set encoding=utf-8
+set fileencoding=utf-8
+set fileformats=unix,dos,mac
+
 inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
 inoremap[<Enter> []<LEFT><CR><ESC><S-o>
 inoremap(<Enter> ()<LEFT><CR><ESC><S-o>
+
+inoremap<Space>e <CR><ESC><S-o>
+
+inoremap <silent> jj <ESC>
 
 nnoremap <Space>h ^
 nnoremap <Space>l $
@@ -76,6 +92,8 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'surround.vim'
+NeoBundle 'tomtom/tcomment_vim'
 
 call neobundle#end()
 
