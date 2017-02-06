@@ -56,6 +56,7 @@ inoremap <silent> jj <ESC>
 
 nnoremap <Space>h ^
 nnoremap <Space>l $
+nnoremap <S-j> <S-j>x
 
 :source $VIMRUNTIME/macros/matchit.vim
 
