@@ -50,7 +50,7 @@ inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
 inoremap[<Enter> []<LEFT><CR><ESC><S-o>
 inoremap(<Enter> ()<LEFT><CR><ESC><S-o>
 
-inoremap<Space>e <CR><ESC><S-o>
+inoremap <unique> <C-n> <CR><ESC><S-o>
 
 inoremap <silent> jj <ESC>
 
