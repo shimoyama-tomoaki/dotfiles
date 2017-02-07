@@ -67,8 +67,6 @@ nnoremap <Space>l $
 nnoremap <S-j> <S-j>x
 " yank無効
 nnoremap x "_x
-nnoremap d "_d
-nnoremap D "_D
 
 :source $VIMRUNTIME/macros/matchit.vim
 
