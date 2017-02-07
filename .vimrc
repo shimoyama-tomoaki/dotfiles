@@ -1,5 +1,6 @@
 :syntax on
 
+" 折り返し
 set wrap
 
 set hlsearch
@@ -12,9 +13,11 @@ set number
 set wildmenu
 set showcmd
 
+" 色設定
 set t_Co=256
 set background=dark
 
+" カラースキーム
 " molokai
 " autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=118
 " colorscheme molokai
@@ -26,6 +29,7 @@ autocmd ColorScheme * highlight LineNr ctermfg=180
 colorscheme onedark
 let g:onedark_original=1
 
+" タブ,インデント設定
 set expandtab
 set tabstop=2
 set softtabstop=2
@@ -33,25 +37,29 @@ set shiftwidth=2
 set autoindent
 set smartindent
 
+" クリップボード有効
 set clipboard=unnamed,autoselect
+" ステータスライン設定
 set laststatus=2
-
+" swapファイル
 :set noswapfile
-
+" vi互換モード
 set nocompatible
+" Backspace有効
 set backspace=indent,eol,start
+" 上下最小値
 set scrolloff=10
 
+" 文字エンコード
 set encoding=utf-8
 set fileencoding=utf-8
 set fileformats=unix,dos,mac
 
+" キーマッピング
 inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
 inoremap[<Enter> []<LEFT><CR><ESC><S-o>
 inoremap(<Enter> ()<LEFT><CR><ESC><S-o>
-
 inoremap <unique> <C-n> <CR><ESC><S-o>
-
 inoremap <silent> jj <ESC>
 
 nnoremap <Space>h ^
@@ -83,6 +91,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
 
+" プラグイン
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'othree/html5.vim'
