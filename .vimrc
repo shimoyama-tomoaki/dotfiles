@@ -326,6 +326,8 @@ endfunction
 "NERDTreeの設定
 """""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <unique> <C-k> :NERDTreeToggle<CR>
+" デフォルトでドットファイルを表示
+let NERDTreeShowHidden = 1
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
