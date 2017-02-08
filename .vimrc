@@ -205,6 +205,7 @@ nnoremap <Space>gs :Gstatus<CR>
 nnoremap <Space>gd :Gdiff<CR>
 nnoremap <Space>gb :Gblame<CR>
 nnoremap <Space>gr :Gread<CR>
+nnoremap <Space>gl :Glog --oneline<CR>
 
 
 " If there are uninstalled bundles found on startup,
