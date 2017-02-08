@@ -107,6 +107,7 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'surround.vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'scrooloose/nerdtree'
 
 call neobundle#end()
 
@@ -318,6 +319,13 @@ function! MyCharCode()
 
   return "'". char ."' ". nr
 endfunction
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"NERDTreeの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <unique> <C-k> :NERDTreeToggle<CR>
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
