@@ -106,6 +106,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'surround.vim'
 NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-fugitive'
 
 call neobundle#end()
 
@@ -194,6 +195,18 @@ let g:user_emmet_leader_key = '<C-E>'
 
 " Required:
 filetype plugin indent on
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"vim-fugitiveの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <Space>gs :Gstatus<CR>
+nnoremap <Space>gd :Gdiff<CR>
+nnoremap <Space>gb :Gblame<CR>
+nnoremap <Space>gr :Gread<CR>
+nnoremap <Space>gp :Gpush<CR>
+
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
