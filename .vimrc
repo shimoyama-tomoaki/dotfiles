@@ -1,5 +1,6 @@
 :syntax on
 
+" 折り返し
 set wrap
 
 set hlsearch
@@ -12,9 +13,11 @@ set number
 set wildmenu
 set showcmd
 
+" 色設定
 set t_Co=256
 set background=dark
 
+" カラースキーム
 " molokai
 " autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=118
 " colorscheme molokai
@@ -26,6 +29,7 @@ autocmd ColorScheme * highlight LineNr ctermfg=180
 colorscheme onedark
 let g:onedark_original=1
 
+" タブ,インデント設定
 set expandtab
 set tabstop=2
 set softtabstop=2
@@ -33,29 +37,36 @@ set shiftwidth=2
 set autoindent
 set smartindent
 
+" クリップボード有効
 set clipboard=unnamed,autoselect
+" ステータスライン設定
 set laststatus=2
-
+" swapファイル
 :set noswapfile
-
+" vi互換モード
 set nocompatible
+" Backspace有効
 set backspace=indent,eol,start
+" 上下最小値
 set scrolloff=10
 
+" 文字エンコード
 set encoding=utf-8
 set fileencoding=utf-8
 set fileformats=unix,dos,mac
 
+" キーマッピング
 inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
 inoremap[<Enter> []<LEFT><CR><ESC><S-o>
 inoremap(<Enter> ()<LEFT><CR><ESC><S-o>
-
-inoremap<Space>e <CR><ESC><S-o>
-
+inoremap <unique> <C-n> <CR><ESC><S-o>
 inoremap <silent> jj <ESC>
 
 nnoremap <Space>h ^
 nnoremap <Space>l $
+nnoremap <S-j> <S-j>x
+" yank無効
+nnoremap x "_x
 
 :source $VIMRUNTIME/macros/matchit.vim
 
@@ -82,6 +93,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
 
+" プラグイン
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'othree/html5.vim'
@@ -94,6 +106,8 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'surround.vim'
 NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'scrooloose/nerdtree'
 
 call neobundle#end()
 
@@ -182,6 +196,138 @@ let g:user_emmet_leader_key = '<C-E>'
 
 " Required:
 filetype plugin indent on
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"vim-fugitiveの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <Space>gs :Gstatus<CR>
+nnoremap <Space>gd :Gdiff<CR>
+nnoremap <Space>gb :Gblame<CR>
+nnoremap <Space>gr :Gread<CR>
+nnoremap <Space>gl :Glog --oneline<CR>
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"lightlineの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+let g:lightline = {
+        \ 'mode_map': {'c': 'NORMAL'},
+        \ 'active': {
+        \   'left': [
+        \     ['mode', 'paste'],
+        \     ['filename', 'fugitive'],
+        \   ],
+        \   'right': [
+        \     ['lineinfo', 'syntastic'],
+        \     ['percent'],
+        \     ['fileformat', 'fileencoding', 'filetype'],
+        \   ]
+        \ },
+        \ 'component_function': {
+        \   'modified': 'MyModified',
+        \   'readonly': 'MyReadonly',
+        \   'fugitive': 'MyFugitive',
+        \   'filename': 'MyFilename',
+        \   'fileformat': 'MyFileformat',
+        \   'filetype': 'MyFiletype',
+        \   'fileencoding': 'MyFileencoding',
+        \   'mode': 'MyMode',
+        \   'syntastic': 'SyntasticStatuslineFlag',
+        \   'charcode': 'MyCharCode',
+        \ },
+        \ }
+
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '' : ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+  try
+    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+      let _ = fugitive#head()
+      return strlen(_) ? ''._ : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth('.') > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  return winwidth('.') > 60 ? lightline#mode() : ''
+endfunction
+
+" https://github.com/Lokaltog/vim-powerline/blob/develop/autoload/Powerline/Functions.vim
+function! MyCharCode()
+  if winwidth('.') <= 70
+    return ''
+  endif
+
+  " Get the output of :ascii
+  redir => ascii
+  silent! ascii
+  redir END
+
+  if match(ascii, 'NUL') != -1
+    return 'NUL'
+  endif
+
+  " Zero pad hex values
+  let nrformat = '0x%02x'
+
+  let encoding = (&fenc == '' ? &enc : &fenc)
+
+  if encoding == 'utf-8'
+    " Zero pad with 4 zeroes in unicode files
+    let nrformat = '0x%04x'
+  endif
+
+  " Get the character and the numeric value from the return value of :ascii
+  " This matches the two first pieces of the return value, e.g.
+  " "<F>  70" => char: 'F', nr: '70'
+  let [str, char, nr; rest] = matchlist(ascii, '\v\<(.{-1,})\>\s*([0-9]+)')
+
+  " Format the numeric value
+  let nr = printf(nrformat, nr)
+
+  return "'". char ."' ". nr
+endfunction
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"NERDTreeの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <unique> <C-k> :NERDTreeToggle<CR>
+" デフォルトでドットファイルを表示
+let NERDTreeShowHidden = 1
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
