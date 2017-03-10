@@ -24,8 +24,9 @@ set background=dark
 " let g:molokai_original=1
 
 " one_dark
-autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=11
+autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=11 cterm=BOLD
 autocmd ColorScheme * highlight LineNr ctermfg=180
+autocmd ColorScheme * highlight Comment ctermfg=244
 colorscheme onedark
 let g:onedark_original=1
 
@@ -55,6 +56,11 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileformats=unix,dos,mac
 
+set visualbell t_vb =
+set noerrorbells
+
+au BufRead,BufNewFile *.scss set filetype=sass
+
 " キーマッピング
 inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
 inoremap[<Enter> []<LEFT><CR><ESC><S-o>
@@ -65,8 +71,13 @@ inoremap <silent> jj <ESC>
 nnoremap <Space>h ^
 nnoremap <Space>l $
 nnoremap <S-j> <S-j>x
+nnoremap j gj
+nnoremap k gk
 " yank無効
 nnoremap x "_x
+
+vnoremap <Space>h ^
+vnoremap <Space>l $
 
 :source $VIMRUNTIME/macros/matchit.vim
 
@@ -108,6 +119,8 @@ NeoBundle 'surround.vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'jwalton512/vim-blade'
 
 call neobundle#end()
 
@@ -328,6 +341,11 @@ endfunction
 nnoremap <silent> <unique> <C-k> :NERDTreeToggle<CR>
 " デフォルトでドットファイルを表示
 let NERDTreeShowHidden = 1
+
+" ツリーを共有
+if argc() == 0
+  let g:nerdtree_tabs_open_on_console_startup = 1
+end
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
