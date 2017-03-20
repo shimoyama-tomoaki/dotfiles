@@ -15,6 +15,7 @@ unsetopt correct
 alias l1='ls -1'
 alias la1='ls -a -1'
 alias de='cd ~/Desktop'
+alias g='git'
 
 # Reload
 alias szrc='source ~/.zshrc'
