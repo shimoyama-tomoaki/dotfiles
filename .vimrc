@@ -121,6 +121,8 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'jwalton512/vim-blade'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 
 call neobundle#end()
 
@@ -346,6 +348,16 @@ let NERDTreeShowHidden = 1
 if argc() == 0
   let g:nerdtree_tabs_open_on_console_startup = 1
 end
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" agの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+if executable('ag')
+  let g:ctrlp_use_caching=0
+  let g:ctrlp_user_command='ag %s -i --nocolor --nogroup -g ""'
+endif
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
