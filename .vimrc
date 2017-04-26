@@ -34,6 +34,8 @@ let g:onedark_original=256
 " colorscheme twilight256
 
 " wombat
+" autocmd ColorScheme * highlight Directory ctermfg=113
+" autocmd ColorScheme * highlight Statement ctermfg=110
 " colorscheme wombat256mod
 
 " タブ,インデント設定
