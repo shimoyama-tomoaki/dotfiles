@@ -31,6 +31,8 @@ colorscheme onedark
 let g:onedark_original=256
 
 " twilight
+" autocmd ColorScheme * highlight Directory ctermfg=179
+" autocmd ColorScheme * highlight Normal ctermfg=253
 " colorscheme twilight256
 
 " wombat
