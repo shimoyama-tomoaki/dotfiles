@@ -28,7 +28,17 @@ autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=11 cterm=BOLD
 autocmd ColorScheme * highlight LineNr ctermfg=180
 autocmd ColorScheme * highlight Comment ctermfg=244
 colorscheme onedark
-let g:onedark_original=1
+let g:onedark_original=256
+
+" twilight
+" autocmd ColorScheme * highlight Directory ctermfg=179
+" autocmd ColorScheme * highlight Normal ctermfg=253
+" colorscheme twilight256
+
+" wombat
+" autocmd ColorScheme * highlight Directory ctermfg=113
+" autocmd ColorScheme * highlight Statement ctermfg=110
+" colorscheme wombat256mod
 
 " タブ,インデント設定
 set expandtab
@@ -65,7 +75,7 @@ au BufRead,BufNewFile *.scss set filetype=sass
 inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
 inoremap[<Enter> []<LEFT><CR><ESC><S-o>
 inoremap(<Enter> ()<LEFT><CR><ESC><S-o>
-inoremap <unique> <C-n> <CR><ESC><S-o>
+inoremap <C-n> <CR><ESC><S-o>
 inoremap <silent> jj <ESC>
 
 nnoremap <Space>h ^
@@ -340,7 +350,7 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""
 "NERDTreeの設定
 """""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <unique> <C-k> :NERDTreeToggle<CR>
+nnoremap <silent> <C-k> :NERDTreeToggle<CR>
 " デフォルトでドットファイルを表示
 let NERDTreeShowHidden = 1
 
