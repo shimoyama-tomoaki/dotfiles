@@ -24,11 +24,12 @@ set background=dark
 " let g:molokai_original=1
 
 " one_dark
-autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=11 cterm=BOLD
-autocmd ColorScheme * highlight LineNr ctermfg=180
-autocmd ColorScheme * highlight Comment ctermfg=244
-colorscheme onedark
-let g:onedark_original=256
+" autocmd ColorScheme * highlight Normal ctermbg=none
+" autocmd ColorScheme * highlight Visual ctermfg=233 ctermbg=11 cterm=BOLD
+" autocmd ColorScheme * highlight LineNr ctermfg=180
+" autocmd ColorScheme * highlight Comment ctermfg=244
+" colorscheme onedark
+" let g:onedark_original=256
 
 " twilight
 " autocmd ColorScheme * highlight Directory ctermfg=179
@@ -36,9 +37,16 @@ let g:onedark_original=256
 " colorscheme twilight256
 
 " wombat
-" autocmd ColorScheme * highlight Directory ctermfg=113
-" autocmd ColorScheme * highlight Statement ctermfg=110
-" colorscheme wombat256mod
+autocmd ColorScheme * highlight Directory ctermfg=113
+autocmd ColorScheme * highlight Statement ctermfg=110
+colorscheme wombat256mod
+
+" 1989
+" autocmd ColorScheme * highlight Normal ctermbg=none
+" autocmd ColorScheme * highlight LineNr ctermbg=none
+" autocmd ColorScheme * highlight Visual ctermbg=102
+" autocmd ColorScheme * highlight NonText ctermbg=none ctermfg=102
+" colorscheme 1989
 
 " タブ,インデント設定
 set expandtab
@@ -133,6 +141,7 @@ NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'jwalton512/vim-blade'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'editorconfig/editorconfig-vim'
 
 call neobundle#end()
 
