@@ -89,13 +89,14 @@ inoremap <silent> jj <ESC>
 nnoremap <Space>h ^
 nnoremap <Space>l $
 nnoremap <S-j> <S-j>x
-nnoremap j gj
-nnoremap k gk
 " yank無効
 nnoremap x "_x
 
 vnoremap <Space>h ^
 vnoremap <Space>l $
+
+noremap j gj
+noremap k gk
 
 :source $VIMRUNTIME/macros/matchit.vim
 
