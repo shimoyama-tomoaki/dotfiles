@@ -143,6 +143,7 @@ NeoBundle 'jwalton512/vim-blade'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'open-browser.vim'
 
 call neobundle#end()
 
@@ -383,3 +384,11 @@ endif
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" open-browser.vimの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
