@@ -144,6 +144,7 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'open-browser.vim'
+NeoBundle 'scrooloose/syntastic.git'
 
 call neobundle#end()
 
@@ -392,3 +393,16 @@ NeoBundleCheck
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Syntasticの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_scss_checkers = ['scss-syntax.vim']
