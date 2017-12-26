@@ -89,13 +89,14 @@ inoremap <silent> jj <ESC>
 nnoremap <Space>h ^
 nnoremap <Space>l $
 nnoremap <S-j> <S-j>x
-nnoremap j gj
-nnoremap k gk
 " yank無効
 nnoremap x "_x
 
 vnoremap <Space>h ^
 vnoremap <Space>l $
+
+noremap j gj
+noremap k gk
 
 :source $VIMRUNTIME/macros/matchit.vim
 
@@ -142,6 +143,8 @@ NeoBundle 'jwalton512/vim-blade'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'open-browser.vim'
+NeoBundle 'scrooloose/syntastic.git'
 
 call neobundle#end()
 
@@ -287,7 +290,7 @@ function! MyFilename()
         \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
         \  &ft == 'unite' ? unite#get_status_string() :
         \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ '' != expand('%:s') ? expand('%:s') : '[No Name]') .
         \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
@@ -382,3 +385,24 @@ endif
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" open-browser.vimの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Syntasticの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_scss_checkers = ['scss-syntax.vim']
