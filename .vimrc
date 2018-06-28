@@ -39,14 +39,24 @@ set background=dark
 " wombat
 autocmd ColorScheme * highlight Directory ctermfg=113
 autocmd ColorScheme * highlight Statement ctermfg=110
+autocmd ColorScheme * highlight LineNr ctermbg=none
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight NonText ctermbg=none
+autocmd ColorScheme * highlight SpecialKey ctermbg=none
+autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
 colorscheme wombat256mod
 
 " 1989
 " autocmd ColorScheme * highlight Normal ctermbg=none
 " autocmd ColorScheme * highlight LineNr ctermbg=none
 " autocmd ColorScheme * highlight Visual ctermbg=102
+" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=225 guibg=#ffdfff
+" autocmd ColorScheme * highlight Search cterm=none ctermfg=236 ctermbg=225 guifg=#303030 guibg=#ffdfff
 " autocmd ColorScheme * highlight NonText ctermbg=none ctermfg=102
+" autocmd ColorScheme * highlight Comment term=bold ctermfg=246 gui=italic guifg=#9c998e
 " colorscheme 1989
+
+
 
 " タブ,インデント設定
 set expandtab
@@ -144,7 +154,12 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'open-browser.vim'
-NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'neomake/neomake'
+NeoBundle 'benjie/neomake-local-eslint.vim'
+NeoBundle 'basyura/TweetVim'
+NeoBundle 'basyura/twibill.vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'mileszs/ack.vim'
 
 call neobundle#end()
 
@@ -397,12 +412,35 @@ vmap gx <Plug>(openbrowser-smart-search)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
-" Syntasticの設定
+" Neomakeの設定
 """""""""""""""""""""""""""""""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+autocmd! BufWritePost * Neomake
 
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_scss_checkers = ['scss-syntax.vim']
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_css_enabled_maker = ['stylelint']
+let g:neomake_error_sign = {'text' : '>>', 'texthl' : 'Error'}
+let g:neomake_warning_sign = {'text' : '>>', 'texthl' : 'ToDo'}
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" TweetVimの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+let g:tweetvim_tweet_per_page = 50
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" vim-indent-guidesの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=239
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=238
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" ack.vimの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+let g:ackprg = 'ag --nogroup --nocolor --column'
