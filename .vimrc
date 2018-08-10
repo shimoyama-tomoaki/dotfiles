@@ -56,7 +56,7 @@ colorscheme wombat256mod
 " autocmd ColorScheme * highlight Comment term=bold ctermfg=246 gui=italic guifg=#9c998e
 " colorscheme 1989
 
-
+autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 
 " タブ,インデント設定
 set expandtab
@@ -134,22 +134,31 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Note: You don't set neobundle setting in .gvimrc!
 
 " プラグイン
+" highlight
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'jwalton512/vim-blade'
+NeoBundle 'othree/yajs.vim'
+NeoBundle 'maxmellon/vim-jsx-pretty'
+
+" develop
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+
+" github
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'tpope/vim-fugitive'
+
+" other
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'surround.vim'
 NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'jwalton512/vim-blade'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
