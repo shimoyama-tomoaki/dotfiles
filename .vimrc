@@ -11,6 +11,7 @@ set ruler
 set number
 " set list
 set wildmenu
+set history=5000
 set showcmd
 
 " 色設定
