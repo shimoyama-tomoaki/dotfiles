@@ -37,14 +37,14 @@ set background=dark
 " colorscheme twilight256
 
 " wombat
-autocmd ColorScheme * highlight Directory ctermfg=113
-autocmd ColorScheme * highlight Statement ctermfg=110
-autocmd ColorScheme * highlight LineNr ctermbg=none
-autocmd ColorScheme * highlight Normal ctermbg=none
-autocmd ColorScheme * highlight NonText ctermbg=none
-autocmd ColorScheme * highlight SpecialKey ctermbg=none
-autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
-colorscheme wombat256mod
+" autocmd ColorScheme * highlight Directory ctermfg=113
+" autocmd ColorScheme * highlight Statement ctermfg=110
+" autocmd ColorScheme * highlight LineNr ctermbg=none
+" autocmd ColorScheme * highlight Normal ctermbg=none
+" autocmd ColorScheme * highlight NonText ctermbg=none
+" autocmd ColorScheme * highlight SpecialKey ctermbg=none
+" autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
+" colorscheme wombat256mod
 
 " 1989
 " autocmd ColorScheme * highlight Normal ctermbg=none
@@ -55,6 +55,14 @@ colorscheme wombat256mod
 " autocmd ColorScheme * highlight NonText ctermbg=none ctermfg=102
 " autocmd ColorScheme * highlight Comment term=bold ctermfg=246 gui=italic guifg=#9c998e
 " colorscheme 1989
+
+" iceberg
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight NonText ctermbg=none
+autocmd ColorScheme * highlight LineNr ctermbg=none
+autocmd ColorScheme * highlight SpecialKey ctermbg=none
+autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
+colorscheme iceberg
 
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 
