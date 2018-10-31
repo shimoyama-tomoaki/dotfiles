@@ -178,6 +178,7 @@ NeoBundle 'basyura/TweetVim'
 NeoBundle 'basyura/twibill.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'thinca/vim-qfreplace'
 
 call neobundle#end()
 
