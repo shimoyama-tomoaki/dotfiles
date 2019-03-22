@@ -29,6 +29,7 @@ alias vimrc='vim ~/.vimrc'
 alias zshrc='vim ~/.zshrc'
 alias tmuxconf='vim ~/.tmux.conf'
 alias gitconfig='vim ~/.gitconfig'
+alias show256='~/show256colors.pl'
 
 # prompt
 autoload -Uz vcs_info
