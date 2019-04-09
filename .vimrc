@@ -11,6 +11,7 @@ set ruler
 set number
 " set list
 set wildmenu
+set history=5000
 set showcmd
 
 " 色設定
@@ -37,14 +38,14 @@ set background=dark
 " colorscheme twilight256
 
 " wombat
-autocmd ColorScheme * highlight Directory ctermfg=113
-autocmd ColorScheme * highlight Statement ctermfg=110
-autocmd ColorScheme * highlight LineNr ctermbg=none
-autocmd ColorScheme * highlight Normal ctermbg=none
-autocmd ColorScheme * highlight NonText ctermbg=none
-autocmd ColorScheme * highlight SpecialKey ctermbg=none
-autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
-colorscheme wombat256mod
+" autocmd ColorScheme * highlight Directory ctermfg=113
+" autocmd ColorScheme * highlight Statement ctermfg=110
+" autocmd ColorScheme * highlight LineNr ctermbg=none
+" autocmd ColorScheme * highlight Normal ctermbg=none
+" autocmd ColorScheme * highlight NonText ctermbg=none
+" autocmd ColorScheme * highlight SpecialKey ctermbg=none
+" autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
+" colorscheme wombat256mod
 
 " 1989
 " autocmd ColorScheme * highlight Normal ctermbg=none
@@ -55,6 +56,26 @@ colorscheme wombat256mod
 " autocmd ColorScheme * highlight NonText ctermbg=none ctermfg=102
 " autocmd ColorScheme * highlight Comment term=bold ctermfg=246 gui=italic guifg=#9c998e
 " colorscheme 1989
+
+" iceberg
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight NonText ctermbg=none
+autocmd ColorScheme * highlight LineNr ctermbg=none ctermfg=242
+autocmd ColorScheme * highlight SpecialKey ctermbg=none
+autocmd ColorScheme * highlight Visual ctermbg=239
+autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
+autocmd ColorScheme * highlight CursorLine ctermbg=236
+autocmd ColorScheme * highlight MatchParen ctermbg=245
+colorscheme iceberg
+
+" autocmd ColorScheme * highlight Normal ctermbg=none ctermfg=254
+" autocmd ColorScheme * highlight NonText ctermbg=none
+" autocmd ColorScheme * highlight LineNr ctermbg=none
+" autocmd ColorScheme * highlight SpecialKey ctermbg=none
+" autocmd ColorScheme * highlight Visual ctermbg=239
+" autocmd ColorScheme * highlight EndOfBuffer ctermbg=none
+" autocmd ColorScheme * highlight CursorLine ctermbg=236
+" colorscheme cosme
 
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
 
@@ -90,9 +111,9 @@ set noerrorbells
 au BufRead,BufNewFile *.scss set filetype=sass
 
 " キーマッピング
-inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
-inoremap[<Enter> []<LEFT><CR><ESC><S-o>
-inoremap(<Enter> ()<LEFT><CR><ESC><S-o>
+" inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
+" inoremap[<Enter> []<LEFT><CR><ESC><S-o>
+" inoremap(<Enter> ()<LEFT><CR><ESC><S-o>
 inoremap <C-n> <CR><ESC><S-o>
 inoremap <silent> jj <ESC>
 
@@ -169,6 +190,8 @@ NeoBundle 'basyura/TweetVim'
 NeoBundle 'basyura/twibill.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'thinca/vim-qfreplace'
+NeoBundle 'cohama/lexima.vim'
 
 call neobundle#end()
 
@@ -436,6 +459,7 @@ let g:neomake_warning_sign = {'text' : '>>', 'texthl' : 'ToDo'}
 " TweetVimの設定
 """""""""""""""""""""""""""""""""""""""""""""""
 let g:tweetvim_tweet_per_page = 50
+let g:tweetvim_include_rts    = 0
 
 
 
