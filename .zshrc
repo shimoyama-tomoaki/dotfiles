@@ -1,4 +1,5 @@
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH="$HOME/.pyenv/shims:$PATH"
 
 # 色を使用
 autoload -Uz colors
@@ -36,7 +37,17 @@ autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:*' formats '[%F{green}%b%f]'
 zstyle ':vcs_info:*' actionformats '[%F{green}%b%f(%F{red}%a%f)]'
-precmd() { vcs_info }
+precmd() {
+  vcs_info
+  pwd=$(pwd)
+  cwd=${pwd##*/}
+  print -Pn "\e]0;$cwd\a"
+}
+
+preexec() {
+  printf "\033]0;%s\a" "${1%% *} | $cwd"
+}
+
 PROMPT='
 
 [%n@%1d]${vcs_info_msg_0_}
@@ -50,3 +61,6 @@ PROMPT='
 function command_not_found_handler() {
   echo "fuck you. '$1' command is not found.";
 }
+
+# tmux
+[[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
