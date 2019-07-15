@@ -18,6 +18,7 @@ alias la1='ls -a -1'
 alias de='cd ~/Desktop'
 alias g='git'
 alias v='vim .'
+alias mkcd='(){mkdir $1 && cd $_}'
 
 # Reload
 alias szrc='source ~/.zshrc'
