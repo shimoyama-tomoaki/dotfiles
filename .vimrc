@@ -1,7 +1,7 @@
 :syntax on
 
 " 折り返し
-set wrap
+set nowrap
 
 set hlsearch
 set ignorecase
@@ -164,6 +164,7 @@ NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'jwalton512/vim-blade'
 NeoBundle 'othree/yajs.vim'
 NeoBundle 'maxmellon/vim-jsx-pretty'
+NeoBundle 'nikvdp/ejs-syntax'
 
 " develop
 NeoBundle 'itchyny/lightline.vim'
@@ -191,6 +192,7 @@ NeoBundle 'basyura/twibill.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'thinca/vim-qfreplace'
+NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'cohama/lexima.vim'
 
 call neobundle#end()
@@ -477,3 +479,30 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=238
 " ack.vimの設定
 """""""""""""""""""""""""""""""""""""""""""""""
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" ejs-syntaxの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufNewFile,BufRead *.ejs set filetype=ejs
+autocmd BufNewFile,BufRead *._ejs set filetype=ejs
+
+function! s:DetectEjs()
+    if getline(1) =~ '^#!.*\<ejs\>'
+        set filetype=ejs
+    endif
+endfunction
+
+autocmd BufNewFile,BufRead * call s:DetectEjs()
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" vim-easymotionの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
+let g:EasyMotion_leader_key="'"
+let g:EasyMotion_grouping=1
+hi EasyMotionTarget ctermbg=none ctermfg=red
+nmap s <Plug>(easymotion-overwin-f2)
