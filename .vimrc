@@ -185,8 +185,8 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'open-browser.vim'
-NeoBundle 'neomake/neomake'
-NeoBundle 'benjie/neomake-local-eslint.vim'
+" NeoBundle 'neomake/neomake'
+" NeoBundle 'benjie/neomake-local-eslint.vim'
 NeoBundle 'basyura/TweetVim'
 NeoBundle 'basyura/twibill.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -194,6 +194,7 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'cohama/lexima.vim'
+NeoBundle 'dense-analysis/ale'
 
 call neobundle#end()
 
@@ -272,6 +273,22 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"neosnippetの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 
 
@@ -445,15 +462,15 @@ vmap gx <Plug>(openbrowser-smart-search)
 
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""
-" Neomakeの設定
-"""""""""""""""""""""""""""""""""""""""""""""""
-autocmd! BufWritePost * Neomake
-
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_css_enabled_maker = ['stylelint']
-let g:neomake_error_sign = {'text' : '>>', 'texthl' : 'Error'}
-let g:neomake_warning_sign = {'text' : '>>', 'texthl' : 'ToDo'}
+" """""""""""""""""""""""""""""""""""""""""""""""
+" " Neomakeの設定
+" """""""""""""""""""""""""""""""""""""""""""""""
+" autocmd! BufWritePost * Neomake
+"
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_css_enabled_maker = ['stylelint']
+" let g:neomake_error_sign = {'text' : '>>', 'texthl' : 'Error'}
+" let g:neomake_warning_sign = {'text' : '>>', 'texthl' : 'ToDo'}
 
 
 
@@ -506,3 +523,19 @@ let g:EasyMotion_leader_key="'"
 let g:EasyMotion_grouping=1
 hi EasyMotionTarget ctermbg=none ctermfg=red
 nmap s <Plug>(easymotion-overwin-f2)
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" ALEの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_linters = {
+      \   'javascript': ['eslint'],
+      \   'sass': ['stylelint'],
+      \   'css': ['stylelint'],
+      \}
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '💥'
+let g:ale_sign_warning = '💣'
