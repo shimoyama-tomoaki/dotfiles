@@ -1,0 +1,24 @@
+[character]
+symbol = "( ^o^) <"
+error_symbol = "(;^o^) <"
+style_success = "green"
+style_failure = "blue"
+
+[directory]
+truncate_to_repo = false
+
+[git_status]
+modified = "📝 "
+untracked = "🤷 "
+stashed = "📦 "
+prefix = "git[ "
+suffix = "]"
+
+[git_branch]
+symbol = "🌱 "
+
+[nodejs]
+disabled = true
+
+[package]
+disabled = true
