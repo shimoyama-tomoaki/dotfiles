@@ -68,6 +68,7 @@ autocmd ColorScheme * highlight CursorLine ctermbg=236
 autocmd ColorScheme * highlight MatchParen ctermbg=245
 colorscheme iceberg
 
+" cosme
 " autocmd ColorScheme * highlight Normal ctermbg=none ctermfg=254
 " autocmd ColorScheme * highlight NonText ctermbg=none
 " autocmd ColorScheme * highlight LineNr ctermbg=none
@@ -195,6 +196,8 @@ NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'cohama/lexima.vim'
 NeoBundle 'dense-analysis/ale'
+NeoBundle 'mbbill/undotree'
+NeoBundle 'simeji/winresizer'
 
 call neobundle#end()
 
@@ -518,7 +521,7 @@ autocmd BufNewFile,BufRead * call s:DetectEjs()
 """""""""""""""""""""""""""""""""""""""""""""""
 " vim-easymotionの設定
 """""""""""""""""""""""""""""""""""""""""""""""
-let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
+let g:EasyMotion_keys='jklhasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
 let g:EasyMotion_leader_key="'"
 let g:EasyMotion_grouping=1
 hi EasyMotionTarget ctermbg=none ctermfg=red
@@ -539,3 +542,15 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '💥'
 let g:ale_sign_warning = '💣'
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Undotreeの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <S-u> :UndotreeToggle <cr>
+
+if has("persistent_undo")
+    set undodir=~/.undo
+    set undofile
+endif
