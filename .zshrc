@@ -71,3 +71,5 @@ function command_not_found_handler() {
 
 # tmux
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
+
+eval "$( starship init zsh )"
