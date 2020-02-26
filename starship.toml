@@ -1,6 +1,7 @@
 [character]
 symbol = "( ^o^) <"
 error_symbol = "(;^o^) <"
+use_symbol_for_status = true
 style_success = "green"
 style_failure = "blue"
 
@@ -8,14 +9,17 @@ style_failure = "blue"
 truncate_to_repo = false
 
 [git_status]
-modified = "📝 "
-untracked = "🤷 "
-stashed = "📦 "
+conflicted = "💣"
+modified = "📝"
+untracked = "🤷"
+stashed = "📦"
 prefix = "git[ "
-suffix = "]"
+suffix = " ]"
+disabled = true
 
 [git_branch]
 symbol = "🌱 "
+style = "bold #8cc16d"
 
 [nodejs]
 disabled = true
