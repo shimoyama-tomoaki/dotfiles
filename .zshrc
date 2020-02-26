@@ -26,8 +26,15 @@ alias shimo='cd ~/shimoyama'
 alias backlog='cd ~/backlog'
 alias github='cd ~/github'
 
+# git
+alias gs='git status'
+alias gd='git diff'
+alias ga='git add -A'
+alias gl='git lg'
+alias gc='git checkout'
+
 # Reload
-alias szrc='source ~/.zshrc'
+alias sz='source ~/.zshrc'
 
 # Kill DS_Store
 alias killstore='find . -name ".DS_Store" -type f -ls -delete'
@@ -66,7 +73,7 @@ PROMPT='
 
 # error message
 function command_not_found_handler() {
-  echo "fuck you. '$1' command is not found.";
+  echo "fuck you.🖕 '$1' command is not found.";
 }
 
 # tmux

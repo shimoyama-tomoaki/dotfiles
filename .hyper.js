@@ -9,7 +9,7 @@ module.exports = {
     updateChannel: 'stable',
 
     // default font size in pixels for all tabs
-    fontSize: 12,
+    fontSize: 13,
 
     // font family with optional fallbacks
     fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
@@ -130,7 +130,7 @@ module.exports = {
     // Plugins config
     hyperBorder: {
       borderColors: ['random', 'random'],
-      borderWidth: '4px',
+      borderWidth: '5px',
       animate: true
     },
 
