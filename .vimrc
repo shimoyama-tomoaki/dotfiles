@@ -1,7 +1,7 @@
 :syntax on
 
 " 折り返し
-set wrap
+set nowrap
 
 set hlsearch
 set ignorecase
@@ -68,6 +68,7 @@ autocmd ColorScheme * highlight CursorLine ctermbg=236
 autocmd ColorScheme * highlight MatchParen ctermbg=245
 colorscheme iceberg
 
+" cosme
 " autocmd ColorScheme * highlight Normal ctermbg=none ctermfg=254
 " autocmd ColorScheme * highlight NonText ctermbg=none
 " autocmd ColorScheme * highlight LineNr ctermbg=none
@@ -164,6 +165,7 @@ NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'jwalton512/vim-blade'
 NeoBundle 'othree/yajs.vim'
 NeoBundle 'maxmellon/vim-jsx-pretty'
+NeoBundle 'nikvdp/ejs-syntax'
 
 " develop
 NeoBundle 'itchyny/lightline.vim'
@@ -184,14 +186,18 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'open-browser.vim'
-NeoBundle 'neomake/neomake'
-NeoBundle 'benjie/neomake-local-eslint.vim'
+" NeoBundle 'neomake/neomake'
+" NeoBundle 'benjie/neomake-local-eslint.vim'
 NeoBundle 'basyura/TweetVim'
 NeoBundle 'basyura/twibill.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'thinca/vim-qfreplace'
+NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'cohama/lexima.vim'
+NeoBundle 'dense-analysis/ale'
+NeoBundle 'mbbill/undotree'
+NeoBundle 'simeji/winresizer'
 
 call neobundle#end()
 
@@ -270,6 +276,22 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"neosnippetの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 
 
@@ -443,15 +465,15 @@ vmap gx <Plug>(openbrowser-smart-search)
 
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""
-" Neomakeの設定
-"""""""""""""""""""""""""""""""""""""""""""""""
-autocmd! BufWritePost * Neomake
-
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_css_enabled_maker = ['stylelint']
-let g:neomake_error_sign = {'text' : '>>', 'texthl' : 'Error'}
-let g:neomake_warning_sign = {'text' : '>>', 'texthl' : 'ToDo'}
+" """""""""""""""""""""""""""""""""""""""""""""""
+" " Neomakeの設定
+" """""""""""""""""""""""""""""""""""""""""""""""
+" autocmd! BufWritePost * Neomake
+"
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_css_enabled_maker = ['stylelint']
+" let g:neomake_error_sign = {'text' : '>>', 'texthl' : 'Error'}
+" let g:neomake_warning_sign = {'text' : '>>', 'texthl' : 'ToDo'}
 
 
 
@@ -477,3 +499,58 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=238
 " ack.vimの設定
 """""""""""""""""""""""""""""""""""""""""""""""
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" ejs-syntaxの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufNewFile,BufRead *.ejs set filetype=ejs
+autocmd BufNewFile,BufRead *._ejs set filetype=ejs
+
+function! s:DetectEjs()
+    if getline(1) =~ '^#!.*\<ejs\>'
+        set filetype=ejs
+    endif
+endfunction
+
+autocmd BufNewFile,BufRead * call s:DetectEjs()
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" vim-easymotionの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyMotion_keys='jklhasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
+let g:EasyMotion_leader_key="'"
+let g:EasyMotion_grouping=1
+hi EasyMotionTarget ctermbg=none ctermfg=red
+nmap s <Plug>(easymotion-overwin-f2)
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" ALEの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_linters = {
+      \   'javascript': ['eslint'],
+      \   'sass': ['stylelint'],
+      \   'css': ['stylelint'],
+      \}
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '💥'
+let g:ale_sign_warning = '💣'
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Undotreeの設定
+"""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <S-u> :UndotreeToggle <cr>
+
+if has("persistent_undo")
+    set undodir=~/.undo
+    set undofile
+endif
