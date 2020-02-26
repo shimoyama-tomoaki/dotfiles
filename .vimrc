@@ -290,9 +290,10 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 if has('conceal')
-  set conceallevel=2 concealcursor=niv
+  set conceallevel=0 concealcursor=niv
 endif
 
+let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -535,6 +536,7 @@ nmap s <Plug>(easymotion-overwin-f2)
 let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'sass': ['stylelint'],
+      \   'scss': ['stylelint'],
       \   'css': ['stylelint'],
       \}
 let g:ale_lint_on_save = 1

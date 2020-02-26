@@ -1,0 +1,27 @@
+snippet -webkit-
+alias web
+  -webkit-${1}
+
+snippet -o-
+alias o
+  -o-${1}
+
+snippet -ms-
+alias ms
+  -ms-${1}
+
+snippet -moz-
+alias moz
+  -moz-${1}
+
+snippet max-media
+alias maxmq
+  @media (max-width: ${1}px) {
+    ${2}
+  }
+
+snippet min-media
+alias minmq
+  @media (min-width: ${1}px) {
+    ${2}
+  }

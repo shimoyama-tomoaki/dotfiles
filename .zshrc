@@ -15,10 +15,16 @@ unsetopt correct
 # エイリアス
 alias l1='ls -1'
 alias la1='ls -a -1'
-alias de='cd ~/Desktop'
 alias g='git'
 alias v='vim .'
 alias mkcd='(){mkdir $1 && cd $_}'
+
+# 移動系
+alias de='cd ~/Desktop'
+alias dl='cd ~/Downloads'
+alias shimo='cd ~/shimoyama'
+alias backlog='cd ~/backlog'
+alias github='cd ~/github'
 
 # Reload
 alias szrc='source ~/.zshrc'
@@ -65,3 +71,5 @@ function command_not_found_handler() {
 
 # tmux
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
+
+eval "$( starship init zsh )"
