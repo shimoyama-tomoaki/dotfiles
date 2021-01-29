@@ -1,5 +1,6 @@
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="$HOME/.pyenv/shims:$PATH"
+export PATH="$PATH:/usr/local/Cellar/vim/8.1.0850/bin"
 
 # 色を使用
 autoload -Uz colors
@@ -32,6 +33,10 @@ alias gd='git diff'
 alias ga='git add -A'
 alias gl='git lg'
 alias gc='git checkout'
+
+# docker
+alias dup='docker-compose up -d'
+alias ddown='docker-compose down -v'
 
 # Reload
 alias sz='source ~/.zshrc'

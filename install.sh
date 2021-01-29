@@ -1,5 +1,6 @@
 #!/bin/sh
 
+ln -s ~/dotfiles/vim/bundle/neosnippet-snippets/snippets/sass.snip ~/.vim/bundle/neosnippet-snippets/snippets/sass.snip
 ln -s ~/dotfiles/vim/bundle/neosnippet-snippets/snippets/css.snip ~/.vim/bundle/neosnippet-snippets/snippets/css.snip
 ln -s ~/dotfiles/vim/bundle/neosnippet-snippets/snippets/vim.snip ~/.vim/bundle/neosnippet-snippets/snippets/vim.snip
 ln -s ~/dotfiles/.agignore ~/.agignore
