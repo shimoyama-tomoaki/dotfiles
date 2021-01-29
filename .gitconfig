@@ -21,6 +21,7 @@
   pfh = push -f origin head
 	pick = cherry-pick
   pullrebase = !git checkout master && git pull origin master && git checkout - && git rebase master && git lg
+  pullrebasedev = !git checkout develop && git pull origin develop && git checkout - && git rebase develop && git lg
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
