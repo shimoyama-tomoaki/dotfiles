@@ -166,6 +166,7 @@ NeoBundle 'jwalton512/vim-blade'
 NeoBundle 'othree/yajs.vim'
 NeoBundle 'maxmellon/vim-jsx-pretty'
 NeoBundle 'nikvdp/ejs-syntax'
+NeoBundle 'digitaltoad/vim-pug'
 
 " develop
 NeoBundle 'itchyny/lightline.vim'
@@ -544,6 +545,8 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '💥'
 let g:ale_sign_warning = '💣'
+
+nmap <silent>, <Plug>(ale_toggle)
 
 
 

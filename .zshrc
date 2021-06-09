@@ -19,6 +19,7 @@ alias la1='ls -a -1'
 alias g='git'
 alias v='vim .'
 alias mkcd='(){mkdir $1 && cd $_}'
+alias webp='/Users/shimoyama/shimoyama/plugins/webp.sh'
 
 # 移動系
 alias de='cd ~/Desktop'
