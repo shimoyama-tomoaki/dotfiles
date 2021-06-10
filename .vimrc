@@ -132,75 +132,57 @@ noremap k gk
 
 :source $VIMRUNTIME/macros/matchit.vim
 
-" Note: Skip initialization for vim-tiny or vim-small.
- if 0 | endif
-
-  if has('vim_starting')
-     if &compatible
-          set nocompatible               " Be iMproved
-     endif
-
-     " Required:
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
- endif
-
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
 
 " プラグイン
+
+call plug#begin()
+
 " highlight
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'jwalton512/vim-blade'
-NeoBundle 'othree/yajs.vim'
-NeoBundle 'maxmellon/vim-jsx-pretty'
-NeoBundle 'nikvdp/ejs-syntax'
-NeoBundle 'digitaltoad/vim-pug'
+Plug 'mattn/emmet-vim'
+Plug 'hail2u/vim-css3-syntax',    { 'for': 'css' }
+Plug 'othree/html5.vim',          { 'for': 'html' }
+Plug 'pangloss/vim-javascript',   { 'for': 'js' }
+Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
+Plug 'jwalton512/vim-blade',      { 'for': 'php' }
+Plug 'othree/yajs.vim',           { 'for': 'js' }
+Plug 'maxmellon/vim-jsx-pretty',  { 'for': 'js' }
+Plug 'nikvdp/ejs-syntax',         { 'for': 'ejs' }
+Plug 'digitaltoad/vim-pug',       { 'for': 'pug' }
 
 " develop
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
+Plug 'itchyny/lightline.vim'
+Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 " github
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " other
-NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'surround.vim'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'open-browser.vim'
-" NeoBundle 'neomake/neomake'
-" NeoBundle 'benjie/neomake-local-eslint.vim'
-NeoBundle 'basyura/TweetVim'
-NeoBundle 'basyura/twibill.vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'thinca/vim-qfreplace'
-NeoBundle 'easymotion/vim-easymotion'
-NeoBundle 'cohama/lexima.vim'
-NeoBundle 'dense-analysis/ale'
-NeoBundle 'mbbill/undotree'
-NeoBundle 'simeji/winresizer'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'vim-scripts/surround.vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'scrooloose/nerdtree'
+Plug 'rking/ag.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'vim-scripts/open-browser.vim'
+" Plug 'neomake/neomake'
+" Plug 'benjie/neomake-local-eslint.vim'
+" Plug 'basyura/TweetVim'
+" Plug 'basyura/twibill.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'mileszs/ack.vim',      { 'on': 'Ack' }
+Plug 'thinca/vim-qfreplace', { 'on': 'Qfreplace' }
+Plug 'easymotion/vim-easymotion'
+Plug 'cohama/lexima.vim'
+Plug 'dense-analysis/ale'
+Plug 'mbbill/undotree'
+Plug 'simeji/winresizer'
 
-call neobundle#end()
+call plug#end()
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -451,10 +433,6 @@ if executable('ag')
   let g:ctrlp_use_caching=0
   let g:ctrlp_user_command='ag %s -i --nocolor --nogroup -g ""'
 endif
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
 
 
 
