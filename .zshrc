@@ -86,3 +86,17 @@ function command_not_found_handler() {
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 
 eval "$( starship init zsh )"
+
+
+# shell
+function gitMain() {
+  git config --global user.name "shimoyamatomoaki"
+  git config --global user.email shimoyama@udstudio.co.jp
+  git config --list
+}
+
+function gitSub() {
+  git config --global user.name "shimoyama-tomoaki"
+  git config --global user.email gd27.d.shimoyama@gmail.com
+  git config --list
+}
