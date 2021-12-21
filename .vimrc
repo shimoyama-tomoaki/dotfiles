@@ -1,4 +1,5 @@
 :syntax on
+:filetype on
 
 " 折り返し
 set nowrap
@@ -112,9 +113,8 @@ set noerrorbells
 au BufRead,BufNewFile *.scss set filetype=sass
 
 " キーマッピング
-" inoremap{<Enter> {}<LEFT><CR><ESC><S-o>
-" inoremap[<Enter> []<LEFT><CR><ESC><S-o>
-" inoremap(<Enter> ()<LEFT><CR><ESC><S-o>
+autocmd FileType sass inoremap{<Enter> {}<LEFT><CR><ESC><S-o><TAB>
+autocmd FileType sass inoremap[<Enter> []<LEFT><CR><ESC><S-o><TAB>
 inoremap <C-n> <CR><ESC><S-o>
 inoremap <silent> jj <ESC>
 
@@ -157,7 +157,7 @@ Plug 'Shougo/neosnippet-snippets'
 
 " github
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 
 " other
 Plug 'bronson/vim-trailing-whitespace'
@@ -178,7 +178,7 @@ Plug 'thinca/vim-qfreplace', { 'on': 'Qfreplace' }
 Plug 'easymotion/vim-easymotion'
 Plug 'cohama/lexima.vim'
 Plug 'dense-analysis/ale'
-Plug 'mbbill/undotree'
+" Plug 'mbbill/undotree'
 Plug 'simeji/winresizer'
 
 call plug#end()
@@ -259,7 +259,6 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -537,3 +536,12 @@ if has("persistent_undo")
     set undodir=~/.undo
     set undofile
 endif
+
+command -nargs=0 ClearUndo call <sid>ClearUndo()
+function! s:ClearUndo()
+  let old_undolevels = &undolevels
+  set undolevels=-1
+  exe "normal a \<BS>\<Esc>"
+  let &undolevels = old_undolevels
+  unlet old_undolevels
+endfunction
