@@ -1,9 +1,6 @@
 [character]
-symbol = "( ^o^) <"
-error_symbol = "(;^o^) <"
-use_symbol_for_status = true
-style_success = "green"
-style_failure = "blue"
+success_symbol = "[\\( ^o^\\) <](green)"
+error_symbol = "[\\(;^o^\\) <](bright-blue)"
 
 [directory]
 truncate_to_repo = false
