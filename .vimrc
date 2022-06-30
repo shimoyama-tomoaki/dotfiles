@@ -101,6 +101,9 @@ set nocompatible
 set backspace=indent,eol,start
 " 上下最小値
 set scrolloff=10
+" ハイフンを単語の境界にしない
+set isk+=-
+
 
 " 文字エンコード
 set encoding=utf-8
@@ -148,12 +151,20 @@ Plug 'othree/yajs.vim',           { 'for': 'js' }
 Plug 'maxmellon/vim-jsx-pretty',  { 'for': 'js' }
 Plug 'nikvdp/ejs-syntax',         { 'for': 'ejs' }
 Plug 'digitaltoad/vim-pug',       { 'for': 'pug' }
+Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
+Plug 'posva/vim-vue'
 
 " develop
 Plug 'itchyny/lightline.vim'
-Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+
+Plug 'Shougo/ddc.vim'
+Plug 'vim-denops/denops.vim'
+Plug 'Shougo/ddc-around'
+Plug 'Shougo/ddc-matcher_head'
+Plug 'Shougo/ddc-sorter_rank'
+Plug 'LumaKernel/ddc-file'
 
 " github
 Plug 'airblade/vim-gitgutter'
@@ -186,79 +197,53 @@ call plug#end()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
-"neocompleteの設定
+"ddc.vimの設定
 """""""""""""""""""""""""""""""""""""""""""""""
-"Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" Customize global settings
+" Use around source.
+" https://github.com/Shougo/ddc-around
+call ddc#custom#patch_global('sources', ['around', 'file'])
 
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+" Use matcher_head and sorter_rank.
+" https://github.com/Shougo/ddc-matcher_head
+" https://github.com/Shougo/ddc-sorter_rank
+call ddc#custom#patch_global('sourceOptions', {
+      \ '_': {
+      \   'matchers': ['matcher_head'],
+      \   'sorters': ['sorter_rank']},
+      \ })
 
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+" Change source options
+call ddc#custom#patch_global('sourceOptions', {
+      \ 'around': {'mark': 'A'},
+      \ })
+call ddc#custom#patch_global('sourceParams', {
+      \ 'around': {'maxSize': 500},
+      \ })
 
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
+" Customize settings on a filetype
+call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
+call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
+      \ 'clangd': {'mark': 'C'},
+      \ })
+call ddc#custom#patch_filetype('markdown', 'sourceParams', {
+      \ 'around': {'maxSize': 100},
+      \ })
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
+" Mappings
+
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+inoremap <silent><expr> <TAB>
+\ ddc#map#pum_visible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#map#manual_complete()
 
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
+" <S-TAB>: completion back.
+inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+" Use ddc.
+call ddc#enable()
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -276,6 +261,7 @@ if has('conceal')
 endif
 
 let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/'
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -477,7 +463,8 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=238
 """""""""""""""""""""""""""""""""""""""""""""""
 " ack.vimの設定
 """""""""""""""""""""""""""""""""""""""""""""""
-let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ackprg = 'ag'
+let g:ack_default_options = " --case-sensitive --noheading --nopager --nocolor --nogroup --column"
 
 
 

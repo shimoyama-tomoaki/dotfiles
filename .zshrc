@@ -1,6 +1,7 @@
 export PATH=$HOME/.nodebrew/current/bin:$PATH
-export PATH="$HOME/.pyenv/shims:$PATH"
-export PATH="$PATH:/usr/local/Cellar/vim/8.1.0850/bin"
+eval "$(pyenv init --path)"
+export PATH="$PATH:/usr/local/Cellar/vim/8.2.3900/bin/vim"
+
 
 # 色を使用
 autoload -Uz colors
