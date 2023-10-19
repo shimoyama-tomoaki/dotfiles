@@ -80,6 +80,7 @@ colorscheme iceberg
 " colorscheme cosme
 
 autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
+autocmd! BufNewFile,BufRead *.vs,*.fs,*.frag set ft=glsl
 
 " タブ,インデント設定
 set expandtab
@@ -103,6 +104,10 @@ set backspace=indent,eol,start
 set scrolloff=10
 " ハイフンを単語の境界にしない
 set isk+=-
+" 行番号強調
+set cursorline
+hi clear CursorLine
+hi CursorLineNr cterm=NONE ctermfg=150 ctermbg=NONE
 
 
 " 文字エンコード
@@ -142,16 +147,17 @@ call plug#begin()
 
 " highlight
 Plug 'mattn/emmet-vim'
-Plug 'hail2u/vim-css3-syntax',    { 'for': 'css' }
-Plug 'othree/html5.vim',          { 'for': 'html' }
-Plug 'pangloss/vim-javascript',   { 'for': 'js' }
-Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
-Plug 'jwalton512/vim-blade',      { 'for': 'php' }
-Plug 'othree/yajs.vim',           { 'for': 'js' }
-Plug 'maxmellon/vim-jsx-pretty',  { 'for': 'js' }
-Plug 'nikvdp/ejs-syntax',         { 'for': 'ejs' }
-Plug 'digitaltoad/vim-pug',       { 'for': 'pug' }
+Plug 'hail2u/vim-css3-syntax',     { 'for': 'css' }
+Plug 'othree/html5.vim',           { 'for': 'html' }
+Plug 'pangloss/vim-javascript',    { 'for': 'js' }
+Plug 'cakebaker/scss-syntax.vim',  { 'for': 'scss' }
+Plug 'jwalton512/vim-blade',       { 'for': 'php' }
+Plug 'othree/yajs.vim',            { 'for': 'js' }
+Plug 'maxmellon/vim-jsx-pretty',   { 'for': 'js' }
+Plug 'nikvdp/ejs-syntax',          { 'for': 'ejs' }
+Plug 'digitaltoad/vim-pug',        { 'for': 'pug' }
 Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
+Plug 'tikhomirov/vim-glsl',        { 'for': 'frag' }
 Plug 'posva/vim-vue'
 
 " develop
@@ -165,6 +171,7 @@ Plug 'Shougo/ddc-around'
 Plug 'Shougo/ddc-matcher_head'
 Plug 'Shougo/ddc-sorter_rank'
 Plug 'LumaKernel/ddc-file'
+Plug 'godlygeek/tabular'
 
 " github
 Plug 'airblade/vim-gitgutter'
@@ -500,6 +507,7 @@ nmap s <Plug>(easymotion-overwin-f2)
 """""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
       \   'javascript': ['eslint'],
+      \   'typescript': ['eslint'],
       \   'sass': ['stylelint'],
       \   'scss': ['stylelint'],
       \   'css': ['stylelint'],

@@ -29,4 +29,4 @@
 	required = true
 	clean = git-lfs clean -- %f
 [http]
-	postBuffer = 524288000
+	postBuffer = 52428800
