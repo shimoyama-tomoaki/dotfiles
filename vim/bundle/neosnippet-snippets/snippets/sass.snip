@@ -1,21 +1,34 @@
 snippet inxs
 alias @x
-	@include xs-down {
+	@include xs-up {
 		${1}
 	}
 
 snippet insm
 alias @s
+	@include sm-up {
+		${1}
+	}
+
+snippet insmd
+alias @sd
 	@include sm-down {
 		${1}
 	}
 
 snippet inlg
 alias @l
-	@include lg-down {
+	@include lg-up {
+		${1}
+	}
+
+snippet inxl
+alias @x
+	@include xl-up {
 		${1}
 	}
 
 snippet include
 alias @in
-	@include ${1}
+	@include ${1} {
+	}

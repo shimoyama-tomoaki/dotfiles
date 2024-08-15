@@ -275,6 +275,21 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/
 "Emmet-vimの設定
 """""""""""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_leader_key = '<C-E>'
+let g:user_emmet_settings = {
+      \  'html': {
+      \    'default_attributes': {
+      \      'source:ts': [{'type': 'image/'}, {'srcset': ''}],
+      \      'source:ts:max': [{'type': 'image/'}, {'srcset': ''}, {'media': '(max-width: )'}],
+      \      'source:ts:min': [{'type': 'image/'}, {'srcset': ''}, {'media': '(min-width: )'}],
+      \      'img:d': [{'src': ''}, {'alt': ''}, {'decoding': 'async'}],
+      \    },
+      \    'expandos': {
+      \      'psi': 'picture>source:ts+img:d',
+      \      'psi:max': 'picture>source:ts:max+img:d',
+      \      'psi:min': 'picture>source:ts:min+img:d',
+      \    },
+      \  },
+      \  }
 
 " Required:
 filetype plugin indent on
@@ -519,6 +534,8 @@ let g:ale_sign_error = '💥'
 let g:ale_sign_warning = '💣'
 
 nmap <silent>, <Plug>(ale_toggle)
+nmap <silent> <Space>k <Plug>(ale_previous_wrap)
+nmap <silent> <Space>j <Plug>(ale_next_wrap)
 
 
 
@@ -532,7 +549,7 @@ if has("persistent_undo")
     set undofile
 endif
 
-command -nargs=0 ClearUndo call <sid>ClearUndo()
+command! -nargs=0 ClearUndo call <sid>ClearUndo()
 function! s:ClearUndo()
   let old_undolevels = &undolevels
   set undolevels=-1

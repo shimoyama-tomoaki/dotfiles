@@ -40,6 +40,7 @@ alias gc='git checkout'
 alias dup='docker-compose up -d'
 alias ddown='docker-compose down -v'
 alias dssh='docker-compose exec web bash'
+alias dps='docker ps'
 
 # Reload
 alias sz='source ~/.zshrc'

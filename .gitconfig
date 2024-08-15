@@ -12,6 +12,7 @@
   precommit = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
   a = add -A
   cm = commit -m
+  ca = commit -a -m
   lo = log --oneline
 	co = checkout
 	b = branch
